@@ -62,7 +62,7 @@ def token_create(user: str, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
-def token_user(token: str) -> str | None:
+def token_user(token: str) -> User | None:
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
     user = payload.get("sub")
     if user is None:
