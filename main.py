@@ -24,7 +24,7 @@ db_item: dict[int, Item] = {
 }
 
 
-# Crear un nou item
+# Crear un nou Item
 @app.post("/item", response_model=Item)
 async def create_item(item: Item):
     if item.id in db_item:
