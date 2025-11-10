@@ -1,0 +1,12 @@
+test:
+  stage: test
+  image: ghcr.io/astral-sh/uv:debian
+  script:
+    - uv sync
+    - uv run pytest --junitxml=report.xml
+  artifacts:
+    when: always
+    paths:
+      - report.xml
+    reports:
+      junit: report.xml
