@@ -27,22 +27,22 @@ class User:
             return False
 
 
-db: dict[str, User] = {}
+db_user: dict[str, User] = {}
 
 
 def add_user(user: User):
-    if user.id in db:
+    if user.id in db_user:
         return False
-    db[user.id] = user
+    db_user[user.id] = user
     return True
 
 
 def get_user(id: str):
-    return db.get(id)
+    return db_user.get(id)
 
 
 def authenticate(user: str, password: str):
-    user = db.get(user)
+    user = db_user.get(user)
     if not user:
         return False
     try:
@@ -68,4 +68,4 @@ def token_user(token: str) -> User | None:
     if user is None:
         return None
     else:
-        return db.get(user)
+        return db_user.get(user)
